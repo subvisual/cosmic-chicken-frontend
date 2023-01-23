@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import { useConnect, useAccount, useBalance } from "wagmi";
+import ClientOnly from "./ClientOnly";
 
 export default function Connect() {
   const { connect, connectors, isLoading, pendingConnector } = useConnect();
@@ -8,7 +9,7 @@ export default function Connect() {
   const { data: balance } = useBalance({ address });
 
   return (
-    <div>
+    <ClientOnly>
       {isConnected ? (
         <>
           <strong>{address}</strong>
@@ -30,6 +31,6 @@ export default function Connect() {
           </button>
         ))
       )}
-    </div>
+    </ClientOnly>
   );
 }
