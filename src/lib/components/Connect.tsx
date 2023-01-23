@@ -1,5 +1,3 @@
-"use client";
-
 import { useConnect, useAccount, useBalance } from "wagmi";
 import ClientOnly from "./ClientOnly";
 
