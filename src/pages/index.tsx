@@ -19,7 +19,7 @@ export default function Home() {
         </p>
         <p>
           Want to lend some FIL and get a chicken? &nbsp;
-          <Link href="/storage-provider">Learn more</Link>
+          <Link href="/lend">Learn more</Link>
         </p>
         <p>
           How are the chickens? &nbsp;
