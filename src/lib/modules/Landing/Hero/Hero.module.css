@@ -8,12 +8,16 @@
 .eggs {
   position: relative;
   left: -15%;
-  filter: drop-shadow(2px -4px 8px #00000088);
+  width: 254px;
+  height: 177px;
+  filter: drop-shadow(0px -6px 12px #00000044);
 }
 .asteroid-1 {
   position: absolute;
-  right: 20%;
+  right: 26%;
   top: 10%;
+  width: 204px;
+  height: 186px;
 
   animation: float-asteroid-1 30s linear infinite alternate;
 }
@@ -27,11 +31,31 @@
 .astronaut {
   position: absolute;
   inset: 0;
-  top: -25%;
+  top: -35%;
   margin: auto;
+
+  width: 204px;
+  height: 407px;
 
   transform-origin: -5% -5%;
   animation: float-astronaut 45s linear infinite alternate-reverse;
+}
+
+@media screen and (min-width: 1500px) {
+  .eggs {
+    width: 304px;
+    height: 227px;
+  }
+  .astronaut {
+    width: 254px;
+    height: 457px;
+    top: -25%;
+  }
+  .asteroid-1 {
+    width: 254px;
+    height: 236px;
+    right: 20%;
+  }
 }
 
 @keyframes float-astronaut {
