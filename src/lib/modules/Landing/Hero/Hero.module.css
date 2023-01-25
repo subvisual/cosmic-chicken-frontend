@@ -1,16 +1,53 @@
 .root {
   display: flex;
-  gap: 32px;
+  gap: 12px;
   flex-direction: column;
   height: 70vh;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
-.eggs {
+.egg-holder {
   position: relative;
   left: -15%;
-  width: 254px;
-  height: 177px;
-  filter: drop-shadow(0px -6px 12px #00000044);
+  /* width: 254px;
+  height: 177px; */
+}
+.egg-holder-base {
+  position: relative;
+}
+.egg-holder-back {
+  margin-bottom: -10px;
+}
+.egg-btn {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+  transition: translate 0.5s ease;
+}
+.egg-btn:first-of-type {
+  left: 12px;
+  right: auto;
+}
+.egg-btn:last-of-type {
+  right: 12px;
+  left: auto;
+}
+.egg {
+  cursor: pointer;
+  transform-origin: center bottom;
+  animation: shake 8s ease-in-out infinite;
+}
+.egg-text {
+  left: -70%;
+  width: 180px;
+  top: -50%;
+}
+.egg-active {
+  translate: 0 -200%;
+  animation: none;
 }
 .asteroid-1 {
   position: absolute;
@@ -43,8 +80,8 @@
 
 @media screen and (min-width: 1500px) {
   .eggs {
-    width: 304px;
-    height: 227px;
+    /* width: 304px;
+    height: 227px; */
   }
   .astronaut {
     width: 254px;
@@ -95,5 +132,30 @@
   100% {
     rotate: -10deg;
     translate: 40% 0;
+  }
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0deg;
+    translate: 0;
+  }
+  4% {
+    rotate: -2deg;
+  }
+  6% {
+    rotate: 2deg;
+  }
+  8% {
+    rotate: -2deg;
+    translate: 0 -2%;
+  }
+  10% {
+    rotate: 2deg;
+    translate: 0 0%;
+  }
+  11% {
+    rotate: 0deg;
+    translate: 0;
   }
 }
