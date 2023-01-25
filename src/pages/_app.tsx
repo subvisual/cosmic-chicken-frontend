@@ -5,7 +5,7 @@ import { WagmiConfig } from "wagmi";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={client}>      
+    <WagmiConfig client={client}>
       <Component {...pageProps} />
     </WagmiConfig>
   );

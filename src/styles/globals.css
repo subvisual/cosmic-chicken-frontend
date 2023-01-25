@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
-  font-family: system-ui, sans-serif;
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
 }
