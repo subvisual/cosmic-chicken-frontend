@@ -1,3 +1,4 @@
+import Layout from "@/lib/modules/Layout/Layout";
 import "@/styles/globals.css";
 import client from "@/wagmi/client";
 import type { AppProps } from "next/app";

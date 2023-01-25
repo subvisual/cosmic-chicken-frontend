@@ -1,0 +1,74 @@
+.root {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  height: 70vh;
+  margin-bottom: 32px;
+}
+.eggs {
+  position: relative;
+  left: -15%;
+}
+.asteroid-1 {
+  position: absolute;
+  right: 20%;
+  top: 10%;
+
+  animation: float-asteroid-1 30s linear infinite alternate;
+}
+.asteroid-2 {
+  position: absolute;
+  right: 20%;
+  top: -15%;
+
+  animation: float-asteroid-2 30s linear infinite alternate;
+}
+.astronaut {
+  position: absolute;
+  inset: 0;
+  top: -25%;
+  margin: auto;
+
+  transform-origin: -5% -5%;
+  animation: float-astronaut 45s linear infinite alternate-reverse;
+}
+
+@keyframes float-astronaut {
+  0% {
+    rotate: 0deg;
+  }
+  30% {
+    rotate: 10deg;
+    translate: -25% 5%;
+  }
+  70% {
+    translate: -12% -8%;
+    rotate: 20deg;
+  }
+  100% {
+    translate: 0;
+    rotate: 0deg;
+  }
+}
+
+@keyframes float-asteroid-1 {
+  0% {
+    rotate: 0deg;
+    translate: 0;
+  }
+  100% {
+    rotate: 20deg;
+    translate: -30% 0;
+  }
+}
+
+@keyframes float-asteroid-2 {
+  0% {
+    rotate: 0deg;
+    translate: 0;
+  }
+  100% {
+    rotate: -10deg;
+    translate: 40% 0;
+  }
+}
