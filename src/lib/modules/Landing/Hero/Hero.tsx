@@ -4,7 +4,7 @@ import styles from "./Hero.module.css";
 export default function Hero() {
   return (
     <section className={styles["root"]}>
-      <div className="relative flex-1 flex items-end justify-center">
+      <div className="relative flex-1 flex items-end justify-center mb-9">
         <Image
           src="/images/asteroid-2.png"
           alt="An asteroid"
@@ -34,7 +34,7 @@ export default function Hero() {
           className={styles["eggs"]}
         />
       </div>
-      <p className="text-center text-large max-w-lg mx-auto">
+      <p className="text-center text-large max-w-lg mx-auto text-brown">
         Borrow collateral from reputable lenders and lock the future income
         until the storage providers have repaid their loan.
       </p>

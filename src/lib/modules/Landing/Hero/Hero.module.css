@@ -8,6 +8,7 @@
 .eggs {
   position: relative;
   left: -15%;
+  filter: drop-shadow(2px -4px 8px #00000088);
 }
 .asteroid-1 {
   position: absolute;
