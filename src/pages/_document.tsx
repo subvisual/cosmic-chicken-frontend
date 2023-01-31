@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="font-mono bg-offwhite h-full">
+      <body className="font-mono bg-offwhite h-full text-brown">
         <Main />
         <NextScript />
       </body>

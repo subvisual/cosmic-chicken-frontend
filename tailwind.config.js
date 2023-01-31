@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         offwhite: "#F1EFE6",
         "beige-white": "#E3DDD1",
+        beige: "#FAF9F8",
         black: "#000",
         brown: "#423B3C",
         orange: "#EB9F59",
