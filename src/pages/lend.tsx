@@ -6,7 +6,7 @@ export default function Lend() {
   const { address } = useAccount();
 
   const { data }: { data?: nftData } = useQuery(
-    ["nfts"],
+    ["nfts", address],
     async () => await (await fetch("/api/nfts/" + address?.toLowerCase())).json(),
     {
       enabled: !!address,
