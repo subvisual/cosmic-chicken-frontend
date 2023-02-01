@@ -1,8 +1,10 @@
-import Connect from "@/lib/components/Connect";
-import Header from "@/lib/components/Header";
-import Hero from "@/lib/components/Hero";
-import Head from "next/head";
 import Link from "next/link";
+import Hero from "@/lib/components/Hero";
+import Header from "@/lib/components/Header";
+import Footer from "@/lib/components/Footer";
+import Head from "next/head";
+import Image from "next/image";
+import InfoCard from "@/lib/components/InfoCard";
 
 export default function Home() {
   return (
@@ -16,20 +18,106 @@ export default function Home() {
       <Header />
       <Hero />
       <main>
-        <h1>Cosmic Chicken</h1>
-        <p>
-          Need some FIL to become a storage provider? &nbsp;
-          <Link href="/storage-provider">Sign up</Link>
-        </p>
-        <p>
-          Want to lend some FIL and get a chicken? &nbsp;
-          <Link href="/lend">Learn more</Link>
-        </p>
-        <p>
-          How are the chickens? &nbsp;
-          <Link href="/overview">Check it out</Link>
-        </p>
-        <Connect />
+        <section className="pb-48">
+          <div className="flex gap-8 items-center py-8 px-16 w-fit mx-auto rounded-3xl border-orange border-4 mb-32">
+            <h2 className="text-orange font-sans text-3xl">
+              Want to lend some fil and get a chicken?
+            </h2>
+            <Image src="/images/egg.png" alt="egg-shaped asteroid" width={77.5} height={93.95} />
+            <Link href="/" className="cta-primary">
+              Try it now
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-20 justify-between max-w-[960px] mx-auto">
+            <InfoCard
+              title="Lenders"
+              steps={[
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+              ]}
+              link={{ text: "Sign up as lender", href: "/lender" }}
+            />
+            <InfoCard
+              title="Storage Provider"
+              steps={[
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+              ]}
+              link={{ text: "Sign up as provider", href: "/storage-provider" }}
+            />
+          </div>
+        </section>
+        <section className="w-3/5 mx-auto text-center pb-60">
+          <h2 className="font-sans text-4xl mb-8">NFT.storage for the Chicken Bond NFT</h2>
+          <p className="mb-16">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et excepturi dolorum odio
+            facere reprehenderit ea temporibus quasi illum doloremque placeat!
+          </p>
+          <div className="flex gap-14 justify-center">
+            <Image
+              src="/images/bonds/bond-bonding.svg"
+              alt="Bond NFT - bonding"
+              width={180}
+              height={264}
+            />
+            <Image
+              src="/images/bonds/bond-chicken-in.svg"
+              alt="Bond NFT - chicken-in"
+              width={180}
+              height={264}
+            />
+            <Image
+              src="/images/bonds/bond-chicken-out.svg"
+              alt="Bond NFT - chicken-out"
+              width={180}
+              height={264}
+            />
+          </div>
+        </section>
+        <section className="pb-48">
+          <div className="bg-orange rounded-3xl w-3/5 mx-auto px-52 pt-16 pb-10 text-center relative">
+            <Image
+              src="/images/asteroid-3.png"
+              alt="asteroid flying down from left"
+              width={160.56}
+              height={126.61}
+              className="absolute -top-12 left-4"
+            />
+            <Image
+              src="/images/asteroid-4.png"
+              alt="asteroid flying down from right"
+              width={182.98}
+              height={61.09}
+              className="absolute -top-8 right-24"
+            />
+            <h2 className="font-sans text-5xl mb-10">Need some FIL to start?</h2>
+            <Link href="/storage-provider" className="cta-primary">
+              Sign up
+            </Link>
+          </div>
+        </section>
+        <section className="pt-32 pb-40 bg-offwhite">
+          <h2 className="font-sans text-5xl mb-10 text-center">How are the chickens?</h2>
+          <div className="flex items-center gap-16 w-3/5 mx-auto">
+            <Image
+              src="/images/chicken-ufo.png"
+              alt="chicken on a flying saucer"
+              width={332.91}
+              height={162.92}
+            />
+            <div className="w-3/5 pt-12 flex flex-col gap-7 items-start">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor non illo dolorem
+                perferendis itaque dolore neque nobis eveniet velit mollitia!
+              </p>
+              <Link href="/overview" className="cta-primary">
+                Check them out
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -14,12 +14,16 @@ module.exports = {
         huge: "40px",
       },
       colors: {
+        background: "#F8FAF9",
         offwhite: "#F1EFE6",
-        "beige-white": "#E3DDD1",
         beige: "#FAF9F8",
-        black: "#000",
+        black: "#262525",
         brown: "#423B3C",
         orange: "#EB9F59",
+      },
+      dropShadow: {
+        dark: "4px 4px 1px #262525",
+        light: "0 4px 4px #262525",
       },
     },
   },
