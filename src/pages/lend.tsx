@@ -2,6 +2,7 @@ import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
 import NftCard from "@/lib/components/NftCard";
+import { NftMockType } from "@/lib/data/nftDataMock";
 import { useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import { useAccount } from "wagmi";
@@ -10,7 +11,7 @@ export default function Lend() {
   const { address, isConnected } = useAccount();
   const [bondFilter, setBondFilter] = useState<"none" | "current" | "expired">("none");
 
-  const { data }: { data?: nftData } = useQuery(
+  const { data: nfts }: { data?: Array<NftMockType> } = useQuery(
     ["nfts", address],
     async () => await (await fetch("/api/nfts/" + address?.toLowerCase())).json(),
     {
