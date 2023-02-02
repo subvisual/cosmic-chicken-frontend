@@ -19,15 +19,6 @@ export default function Home() {
       <Hero />
       <main>
         <section className="pb-48">
-          <div className="flex gap-8 items-center py-8 px-16 w-fit mx-auto rounded-3xl border-orange border-4 mb-32">
-            <h2 className="text-orange font-sans text-3xl">
-              Want to lend some fil and get a chicken?
-            </h2>
-            <Image src="/images/egg.png" alt="egg-shaped asteroid" width={77.5} height={93.95} />
-            <Link href="/" className="cta-primary">
-              Try it now
-            </Link>
-          </div>
           <div className="grid grid-cols-2 gap-20 justify-between max-w-[960px] mx-auto">
             <InfoCard
               title="Lenders"
@@ -36,7 +27,7 @@ export default function Home() {
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
               ]}
-              link={{ text: "Sign up as lender", href: "/lender" }}
+              link={{ text: "Sign up as lender", href: "/lend" }}
             />
             <InfoCard
               title="Storage Provider"
@@ -92,8 +83,8 @@ export default function Home() {
               height={61.09}
               className="absolute -top-8 right-24"
             />
-            <h2 className="font-sans text-5xl mb-10">Need some FIL to start?</h2>
-            <Link href="/storage-provider" className="cta-primary">
+            <h2 className="font-sans text-5xl mb-10 leading-snug">Need some FIL to start?</h2>
+            <Link href="/storage-provider" className="cta-primary hover:bg-black">
               Sign up
             </Link>
           </div>
