@@ -4,7 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cta-primary {
+    @apply inline-block py-4 px-6 bg-brown text-lg text-offwhite uppercase rounded-xl shadow-md border-4 border-beige drop-shadow-dark tracking-wide hover:bg-orange transition-all;
+  }
+}
+
 html,
 body {
   height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
 }
