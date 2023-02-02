@@ -69,7 +69,7 @@ export default function Lend() {
                   Mint new bond
                 </button>
               </div>
-              {displayBonds?.length && (
+              {displayBonds && displayBonds.length > 0 && (
                 <div className="flex flex-col gap-12">
                   {displayBonds
                     .sort((a, b) => Number(b.projection_id) - Number(a.projection_id))

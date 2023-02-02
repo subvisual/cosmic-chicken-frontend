@@ -6,11 +6,11 @@ export type NftMockType = {
     value: string;
     token: string;
   };
-  accruedValue: {
+  accrued_value: {
     value: string;
     token: string;
   };
-  createdAt: string;
+  created_at: string;
   status: "chicken-in" | "chicken-out" | "bonding";
 };
 
@@ -23,11 +23,11 @@ export const nftDataMock: Array<NftMockType> = [
       value: "100",
       token: "TFIL",
     },
-    accruedValue: {
+    accrued_value: {
       value: "115.3",
       token: "bTFIL",
     },
-    createdAt: "1654005776000",
+    created_at: "1654005776000",
     status: "chicken-in",
   },
   {
@@ -38,11 +38,11 @@ export const nftDataMock: Array<NftMockType> = [
       value: "100",
       token: "TFIL",
     },
-    accruedValue: {
+    accrued_value: {
       value: "127.8",
       token: "bTFIL",
     },
-    createdAt: "1656770576000",
+    created_at: "1656770576000",
     status: "chicken-in",
   },
   {
@@ -53,11 +53,11 @@ export const nftDataMock: Array<NftMockType> = [
       value: "100",
       token: "TFIL",
     },
-    accruedValue: {
+    accrued_value: {
       value: "122",
       token: "bTFIL",
     },
-    createdAt: "1657202576000",
+    created_at: "1657202576000",
     status: "chicken-in",
   },
   {
@@ -68,11 +68,11 @@ export const nftDataMock: Array<NftMockType> = [
       value: "100",
       token: "TFIL",
     },
-    accruedValue: {
+    accrued_value: {
       value: "60.7",
       token: "bTFIL",
     },
-    createdAt: "1669903376000",
+    created_at: "1669903376000",
     status: "chicken-out",
   },
   {
@@ -83,11 +83,11 @@ export const nftDataMock: Array<NftMockType> = [
       value: "100",
       token: "TFIL",
     },
-    accruedValue: {
+    accrued_value: {
       value: "0.1",
       token: "bTFIL",
     },
-    createdAt: "1675270793000",
+    created_at: "1675270793000",
     status: "bonding",
   },
 ];
