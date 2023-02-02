@@ -1,9 +1,10 @@
-import Mint from "@/lib/components/Mint";
+import AppHeader from "@/lib/components/AppHeader";
+import Connect from "@/lib/components/Connect";
 import { useQuery } from "react-query";
 import { useAccount } from "wagmi";
 
 export default function Lend() {
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
 
   const { data }: { data?: nftData } = useQuery(
     ["nfts", address],
@@ -16,8 +17,8 @@ export default function Lend() {
 
   return (
     <>
-      <h1>Lend</h1>
-      <Mint />
+      <AppHeader type="Lender" />
+      {!isConnected && <Connect />}
       {data?.length && (
         <ul>
           {data
