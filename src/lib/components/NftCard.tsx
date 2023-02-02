@@ -12,7 +12,7 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
         <div className="flex justify-around flex-wrap gap-8 py-12 w-full">
           <div>
             <p>Created at</p>
-            <p>{new Date(parseInt(nft.createdAt)).toLocaleDateString("en-UK")}</p>
+            <p>{new Date(parseInt(nft.created_at)).toLocaleDateString("en-UK")}</p>
           </div>
           <div>
             <p>Deposit</p>
@@ -20,7 +20,7 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
           </div>
           <div>
             <p>Accrued value</p>
-            <p>{nft.accruedValue.value + " " + nft.accruedValue.token}</p>
+            <p>{nft.accrued_value.value + " " + nft.accrued_value.token}</p>
           </div>
         </div>
         {nft.status === "bonding" && (
