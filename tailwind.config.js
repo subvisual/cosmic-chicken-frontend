@@ -24,7 +24,7 @@ module.exports = {
       },
       dropShadow: {
         dark: "4px 4px 1px #262525",
-        light: "0 4px 4px #262525",
+        light: "0 3px 4px #26252540",
       },
     },
   },
