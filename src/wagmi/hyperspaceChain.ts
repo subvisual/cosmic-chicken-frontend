@@ -10,8 +10,8 @@ export const hyperpace: Chain = {
     symbol: "tFIL",
   },
   rpcUrls: {
-    default: { http: ["https://api.hyperspace.node.glif.io/rpc/v0"] },
-    public: { http: ["https://api.hyperspace.node.glif.io/rpc/v0"] },
+    default: { http: ["https://api.hyperspace.node.glif.io/rpc/v1"] },
+    public: { http: ["https://api.hyperspace.node.glif.io/rpc/v1"] },
   },
   blockExplorers: {
     default: {

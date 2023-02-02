@@ -19,11 +19,12 @@ module.exports = {
         beige: "#FAF9F8",
         black: "#262525",
         brown: "#423B3C",
+        "light-brown": "#D9CBB8",
         orange: "#EB9F59",
       },
       dropShadow: {
         dark: "4px 4px 1px #262525",
-        light: "0 4px 4px #262525",
+        light: "0 3px 4px #26252540",
       },
     },
   },
