@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Nanum+Pen+Script&display=swap&family=DM+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -27,7 +27,8 @@
 }
 
 html,
-body {
+body,
+#__next {
   height: 100%;
 }
 

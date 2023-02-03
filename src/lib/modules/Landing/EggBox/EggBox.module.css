@@ -1,0 +1,74 @@
+.egg-holder {
+  position: relative;
+  left: -15%;
+}
+.egg-holder-base {
+  position: relative;
+}
+.egg-holder-back {
+  margin-bottom: -10px;
+}
+.egg-btn {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+  border: 0;
+  transition: translate 0.5s ease;
+  padding: 0;
+  box-shadow: none;
+}
+.egg-btn:hover {
+  border: 0;
+  box-shadow: none;
+}
+.egg-btn:first-of-type {
+  left: 12px;
+  right: auto;
+}
+.egg-btn:last-of-type {
+  right: 12px;
+  left: auto;
+}
+.egg {
+  cursor: pointer;
+  transform-origin: center bottom;
+  animation: shake 8s ease-in-out infinite;
+}
+.egg-text {
+  left: -70%;
+  width: 200px;
+  top: -50%;
+}
+.egg-active {
+  translate: 0 -200%;
+  animation: none;
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0deg;
+    translate: 0;
+  }
+  4% {
+    rotate: -2deg;
+  }
+  6% {
+    rotate: 2deg;
+  }
+  8% {
+    rotate: -2deg;
+    translate: 0 -2%;
+  }
+  10% {
+    rotate: 2deg;
+    translate: 0 0%;
+  }
+  11% {
+    rotate: 0deg;
+    translate: 0;
+  }
+}

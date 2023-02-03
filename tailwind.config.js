@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         sans: ["Anton", "sans-serif"],
         mono: ["DM Mono", "sans-serif"],
+        hand: ["Nanum Pen Script", "sans-serif"],
       },
       fontSize: {
         small: "18px",
