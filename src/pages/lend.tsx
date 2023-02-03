@@ -5,7 +5,10 @@ import NftCard from "@/lib/components/NftCard";
 import { NftMockType } from "@/lib/data/nftDataMock";
 import { useMemo, useState } from "react";
 import { useQuery } from "react-query";
-import { useAccount } from "wagmi";
+import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
+import { BOND_MANAGER_CONTRACT } from "@/lib/constants";
+import abi from "../lib/abi/bondManager.json";
+import { BigNumber } from "ethers";
 
 export default function Lend() {
   const { address, isConnected } = useAccount();
@@ -32,6 +35,18 @@ export default function Lend() {
         return nfts;
     }
   }, [bondFilter, nfts]);
+
+  const { config } = usePrepareContractWrite({
+    address: BOND_MANAGER_CONTRACT,
+    abi,
+    functionName: "createBond",
+    overrides: {
+      gasLimit: BigNumber.from(1e10),
+    },
+  });
+  const { write } = useContractWrite(config);
+
+  const mintNFT = () => write?.();
 
   return (
     <ClientOnly>
@@ -65,7 +80,7 @@ export default function Lend() {
                     Expired
                   </button>
                 </div>
-                <button className="btn btn-orange" onClick={() => console.log("mint")}>
+                <button className="btn btn-orange" onClick={mintNFT}>
                   Mint new bond
                 </button>
               </div>
