@@ -6,6 +6,7 @@ import AppHeader from "@/lib/components/AppHeader";
 import abi from "../../lib/abi/pool.json";
 import { POOL_CONTRACT } from "../../lib/constants";
 import Image from "next/image";
+import { BigNumber } from "ethers";
 
 export default function Deposit() {
   const [amount, setAmount] = useState<number>(0);
@@ -16,6 +17,7 @@ export default function Deposit() {
     functionName: "depositStorageProvider",
     overrides: {
       ...(amount && { value: parseEther(amount?.toString()) }),
+      gasLimit: BigNumber.from(1e10),
     },
   });
 
@@ -26,7 +28,14 @@ export default function Deposit() {
   });
 
   useEffect(() => {
-    isLoading && Router.push("/storage-provider");
+    isLoading &&
+      Router.push(
+        {
+          pathname: "/storage-provider",
+          query: { a: amount },
+        },
+        "/storage-provider"
+      );
   }, [isLoading]);
 
   const handleInputChange = (ev: ChangeEvent<HTMLInputElement>) => {

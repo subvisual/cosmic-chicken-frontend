@@ -4,7 +4,7 @@ import Connect from "@/lib/components/Connect";
 import { useAccount, useContractRead } from "wagmi";
 import { LoansMock } from "@/lib/data/loansMock";
 import { useEffect, useMemo, useState } from "react";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import LoanCard from "@/lib/components/LoanCard";
 import Link from "next/link";
 import abi from "../../lib/abi/pool.json";
@@ -15,6 +15,8 @@ export default function StorageProvider() {
   const { address, isConnected } = useAccount();
   const [loanFilter, setLoanFilter] = useState<"current" | "finished">("current");
   const [balance, setBalance] = useState<number>();
+  const router = useRouter();
+  const { a: depositedAmount } = router.query;
 
   const userLoans = useMemo(() => {
     if (!address) return;
@@ -86,7 +88,10 @@ export default function StorageProvider() {
               </div>
               <div className="bg-offwhite shadow-xl rounded-3xl px-12 py-8 mb-5 flex justify-between">
                 <p>Total balance</p>
-                <span className="text-3xl font-bold">{truncateAmount(balance || 0)} TFIL</span>
+                <span className="text-3xl font-bold">
+                  {truncateAmount((balance || 0) + (parseFloat(depositedAmount as string) || 0))}{" "}
+                  TFIL
+                </span>
               </div>
               {displayLoans && displayLoans.length > 0 ? (
                 <div className="flex flex-col gap-12">
