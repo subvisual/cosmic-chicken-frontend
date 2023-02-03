@@ -71,7 +71,7 @@ export default function RequestLoan() {
             />
           </label>
           <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
-            Amount that want to request
+            Amount requested
             <input
               onChange={handleAmountChange}
               name="amount requested"
