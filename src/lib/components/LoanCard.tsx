@@ -4,7 +4,7 @@ import { truncateAmount } from "../utils/truncate";
 
 export default function LoanCard({ loan }: { loan: LoanMockType }) {
   return (
-    <div className="rounded-3xl bg-beige drop-shadow-light p-12 pt-14">
+    <div className="rounded-3xl bg-beige drop-shadow-light p-12 pt-8">
       <div className="flex justify-between py-4 border-b border-light-brown w-full mb-12">
         <p>Loan started</p>
         <p>{new Date(parseInt(loan.created_at)).toLocaleDateString("en-UK")}</p>

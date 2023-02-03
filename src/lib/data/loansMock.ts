@@ -82,6 +82,6 @@ export const LoansMock: Array<LoanMockType> = [
       token: "TFIL",
     },
     created_at: "1675270793000",
-    status: "closed",
+    status: "active",
   },
 ];
