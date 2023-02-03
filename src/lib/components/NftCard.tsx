@@ -34,14 +34,15 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
 
   function handleChickenIn() {
     renderModal({
-      message: "By chickening in, you lose your initial deposit and get the boosted token",
+      message: "By chickening in, you lose your initial deposit and get the accrued boosted token",
       onContinue: () => chickenInWrite?.(),
     });
   }
 
   function handleChickenOut() {
     renderModal({
-      message: "By chickening out, you lose your initial deposit and get the boosted token",
+      message:
+        "By chickening out, you lose your accrued boosted token and get your initial deposit back",
       onContinue: () => chickenOutWrite?.(),
     });
   }
