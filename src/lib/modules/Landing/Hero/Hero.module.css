@@ -35,10 +35,6 @@
 }
 
 @media screen and (min-width: 1500px) {
-  .eggs {
-    /* width: 304px;
-    height: 227px; */
-  }
   .astronaut {
     width: 254px;
     height: 457px;
