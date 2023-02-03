@@ -48,7 +48,7 @@ export default function RequestLoan() {
           className="bg-beige boder border-light-brown shadow-lg rounded-3xl p-12 flex flex-col items-start gap-8"
         >
           <h2 className="text-4xl font-sans">Request a loan</h2>
-          <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
+          <label className="bg-offwhite px-3 py-2 flex justify-between gap-6 w-full items-center">
             Address of the miner/worker
             <input
               required
@@ -56,10 +56,10 @@ export default function RequestLoan() {
               name="miner address"
               type="text"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2"
+              className="bg-transparent outline-light-brown w-1/2 px-2 py-1"
             />
           </label>
-          <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
+          <label className="bg-offwhite px-3 py-2 flex justify-between gap-6 w-full items-center">
             Address of the owner
             <input
               required
@@ -67,10 +67,10 @@ export default function RequestLoan() {
               name="owner address"
               type="text"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2"
+              className="bg-transparent outline-brown w-1/2 px-2 py-1"
             />
           </label>
-          <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
+          <label className="bg-offwhite px-3 py-2 flex justify-between gap-6 w-full items-center">
             Amount requested
             <input
               onChange={handleAmountChange}
@@ -79,7 +79,7 @@ export default function RequestLoan() {
               required
               min="1"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2"
+              className="bg-transparent outline-brown w-1/2 px-2 py-1"
             />
           </label>
           <label>

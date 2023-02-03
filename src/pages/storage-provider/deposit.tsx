@@ -5,6 +5,7 @@ import { parseEther } from "ethers/lib/utils.js";
 import AppHeader from "@/lib/components/AppHeader";
 import abi from "../../lib/abi/pool.json";
 import { POOL_CONTRACT } from "../../lib/constants";
+import Image from "next/image";
 
 export default function Deposit() {
   const [amount, setAmount] = useState<number>(0);
@@ -43,19 +44,22 @@ export default function Deposit() {
       <main className="text-lg max-w-4xl mx-auto py-24">
         <form
           onSubmit={handleFormSubmit}
-          className="bg-beige boder border-light-brown shadow-lg rounded-3xl py-16 px-14 flex flex-col items-start gap-12"
+          className="bg-offwhite boder border-light-brown shadow-lg rounded-3xl py-16 px-14 flex justify-around"
         >
-          <p>Deposit amount</p>
-          <input
-            required
-            min="1"
-            className="text-4xl border border-light-brown rounded-xl py-1 px-3 block max-w-full appearance-none"
-            placeholder="100 tFIL"
-            onChange={handleInputChange}
-          />
-          <button className="btn btn-orange" type="submit">
-            Deposit
-          </button>
+          <div className="flex flex-col justify-around items-start gap-12">
+            <p>Deposit amount</p>
+            <input
+              required
+              min="1"
+              className="text-4xl border border-light-brown rounded-xl py-1 px-3 block max-w-full appearance-none"
+              placeholder="100 tFIL"
+              onChange={handleInputChange}
+            />
+            <button className="btn btn-orange" type="submit">
+              Deposit
+            </button>
+          </div>
+          <Image src="/images/astronaut.png" alt="astronaut" width={138} height={247.49} />
         </form>
       </main>
     </>
