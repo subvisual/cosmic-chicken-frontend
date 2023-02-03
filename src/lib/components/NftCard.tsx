@@ -2,21 +2,47 @@ import { NftMockType } from "../data/nftDataMock";
 import Image from "next/image";
 import useModal from "../hooks/useModal";
 import { truncateAmount } from "../utils/truncate";
+import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { BOND_MANAGER_CONTRACT } from "../constants";
+import abi from "../abi/bondManager.json";
+import { BigNumber } from "ethers";
 
 export default function NftCard({ nft }: { nft: NftMockType }) {
   const { renderModal } = useModal();
 
+  const { config: chickenInConfig } = usePrepareContractWrite({
+    address: BOND_MANAGER_CONTRACT,
+    abi,
+    functionName: "chickenIn",
+    args: [nft.projection_id],
+    overrides: {
+      gasLimit: BigNumber.from(1e10),
+    },
+  });
+  const { write: chickenInWrite } = useContractWrite(chickenInConfig);
+
+  const { config: chickenOutConfig } = usePrepareContractWrite({
+    address: BOND_MANAGER_CONTRACT,
+    abi,
+    functionName: "chickenOut",
+    args: [nft.projection_id, 0],
+    overrides: {
+      gasLimit: BigNumber.from(1e10),
+    },
+  });
+  const { write: chickenOutWrite } = useContractWrite(chickenOutConfig);
+
   function handleChickenIn() {
     renderModal({
       message: "By chickening in, you lose your initial deposit and get the boosted token",
-      onContinue: () => console.log("Get insidee"),
+      onContinue: () => chickenInWrite?.(),
     });
   }
 
   function handleChickenOut() {
     renderModal({
       message: "By chickening out, you lose your initial deposit and get the boosted token",
-      onContinue: () => console.log("Get me out"),
+      onContinue: () => chickenOutWrite?.(),
     });
   }
 
