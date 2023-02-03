@@ -7,7 +7,7 @@ export default function Connect() {
     <>
       {connectors.map(connector => (
         <button
-          className="btn-orange"
+          className="btn btn-orange"
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector })}

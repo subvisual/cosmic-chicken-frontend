@@ -2,10 +2,11 @@ import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
 import { useAccount } from "wagmi";
-import { LoansMock, LoanMockType } from "@/lib/data/loansMock";
+import { LoansMock } from "@/lib/data/loansMock";
 import { useEffect, useMemo, useState } from "react";
 import Router from "next/router";
 import LoanCard from "@/lib/components/LoanCard";
+import Link from "next/link";
 
 export default function StorageProvider() {
   const { address, isConnected } = useAccount();
@@ -53,24 +54,21 @@ export default function StorageProvider() {
               <div className="flex justify-between mb-8">
                 <div className="flex gap-6">
                   <button
-                    className={`btn-beige ${loanFilter === "current" ? "bg-offwhite" : ""}`}
+                    className={`btn btn-beige ${loanFilter === "current" ? "bg-offwhite" : ""}`}
                     onClick={() => setLoanFilter("current")}
                   >
                     Current
                   </button>
                   <button
-                    className={`btn-beige ${loanFilter === "finished" ? "bg-offwhite" : ""}`}
+                    className={`btn btn-beige ${loanFilter === "finished" ? "bg-offwhite" : ""}`}
                     onClick={() => setLoanFilter("finished")}
                   >
                     Expired
                   </button>
                 </div>
-                <button
-                  className="btn-orange"
-                  onClick={() => Router.push("/storage-provider/deposit")}
-                >
+                <Link href="/storage-provider/deposit" className="btn btn-orange">
                   Deposit
-                </button>
+                </Link>
               </div>
               {displayLoans && displayLoans.length > 0 ? (
                 <div className="flex flex-col gap-12">
@@ -83,9 +81,9 @@ export default function StorageProvider() {
               ) : (
                 loanFilter === "current" && (
                   <div className="mt-32 mx-auto w-fit">
-                    <button className="btn-brown" onClick={() => console.log("request-loan")}>
+                    <Link href="/storage-provider/request-loan" className="btn btn-brown">
                       Request new loan
-                    </button>
+                    </Link>
                   </div>
                 )
               )}

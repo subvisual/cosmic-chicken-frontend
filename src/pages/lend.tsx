@@ -43,33 +43,33 @@ export default function Lend() {
         ) : (
           <>
             <AppHeader type="Lender" />
-            <main className="text-lg max-w-5xl w-4/5 mx-auto py-24">
+            <main className="text-lg max-w-4xl mx-auto py-24">
               <div className="flex justify-between mb-8">
                 <div className="flex gap-6">
                   <button
-                    className={`btn-beige ${bondFilter === "none" ? "bg-offwhite" : ""}`}
+                    className={`btn btn-beige ${bondFilter === "none" ? "bg-offwhite" : ""}`}
                     onClick={() => setBondFilter("none")}
                   >
                     All
                   </button>
                   <button
-                    className={`btn-beige ${bondFilter === "current" ? "bg-offwhite" : ""}`}
+                    className={`btn btn-beige ${bondFilter === "current" ? "bg-offwhite" : ""}`}
                     onClick={() => setBondFilter("current")}
                   >
                     Current
                   </button>
                   <button
-                    className={`btn-beige ${bondFilter === "expired" ? "bg-offwhite" : ""}`}
+                    className={`btn btn-beige ${bondFilter === "expired" ? "bg-offwhite" : ""}`}
                     onClick={() => setBondFilter("expired")}
                   >
                     Expired
                   </button>
                 </div>
-                <button className="btn-orange" onClick={() => console.log("mint")}>
+                <button className="btn btn-orange" onClick={() => console.log("mint")}>
                   Mint new bond
                 </button>
               </div>
-              {displayBonds && displayBonds.length > 0 && (
+              {displayBonds && displayBonds.length > 0 ? (
                 <div className="flex flex-col gap-12">
                   {displayBonds
                     .sort((a, b) => Number(b.projection_id) - Number(a.projection_id))
@@ -77,6 +77,8 @@ export default function Lend() {
                       <NftCard nft={nft} key={nft.projection_id} />
                     ))}
                 </div>
+              ) : (
+                <p className="mt-32 mx-auto w-fit">No bonds to show</p>
               )}
             </main>
           </>
