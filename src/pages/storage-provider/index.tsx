@@ -1,17 +1,20 @@
 import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import { LoansMock } from "@/lib/data/loansMock";
 import { useEffect, useMemo, useState } from "react";
 import Router from "next/router";
 import LoanCard from "@/lib/components/LoanCard";
 import Link from "next/link";
+import abi from "../../lib/abi/pool.json";
+import { POOL_CONTRACT } from "../../lib/constants";
+import { truncateAmount } from "@/lib/utils/truncate";
 
 export default function StorageProvider() {
   const { address, isConnected } = useAccount();
   const [loanFilter, setLoanFilter] = useState<"current" | "finished">("current");
-  const [hasFirstDeposit, setHasFirstDeposit] = useState(true);
+  const [balance, setBalance] = useState<number>();
 
   const userLoans = useMemo(() => {
     if (!address) return;
@@ -20,6 +23,17 @@ export default function StorageProvider() {
       loan => loan.address.toLowerCase() === (address as string).toLowerCase()
     );
   }, [address]);
+
+  const { data } = useContractRead({
+    address: POOL_CONTRACT,
+    abi,
+    functionName: "storageProviderBalance",
+    args: [address],
+  });
+
+  useEffect(() => {
+    data && setBalance(parseInt(data as string) * 10 ** -18);
+  }, [data]);
 
   const displayLoans = useMemo(() => {
     switch (loanFilter) {
@@ -35,10 +49,10 @@ export default function StorageProvider() {
   }, [loanFilter, userLoans]);
 
   useEffect(() => {
-    if (!address) return;
+    if (!balance) return;
 
-    !hasFirstDeposit && Router.push("deposit");
-  }, [address]);
+    !(balance > 0) && Router.push("/storage-provider/deposit");
+  }, [balance]);
 
   return (
     <ClientOnly>
@@ -69,6 +83,10 @@ export default function StorageProvider() {
                 <Link href="/storage-provider/deposit" className="btn btn-orange">
                   Deposit
                 </Link>
+              </div>
+              <div className="bg-offwhite shadow-xl rounded-3xl px-12 py-8 mb-5 flex justify-between">
+                <p>Total balance</p>
+                <span className="text-3xl font-bold">{truncateAmount(balance || 0)} TFIL</span>
               </div>
               {displayLoans && displayLoans.length > 0 ? (
                 <div className="flex flex-col gap-12">
