@@ -9,7 +9,7 @@
     @apply inline-block py-4 px-6 bg-brown text-lg text-offwhite uppercase rounded-xl shadow-md border-4 border-beige drop-shadow-dark tracking-wide hover:bg-orange transition-all;
   }
 
-  button {
+  .btn {
     @apply inline-block py-4 px-6 text-lg  uppercase rounded-xl border tracking-wide hover:shadow-lg transition-all;
   }
 
