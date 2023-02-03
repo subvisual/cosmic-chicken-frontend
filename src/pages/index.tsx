@@ -25,18 +25,18 @@ export default function Home() {
             <InfoCard
               title="Lenders"
               steps={[
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "One-sided permissionless lending pools",
+                "Claim function, ERC-20 token deposit and get back FIL token",
+                "Choose if you want to chicken in or chicken out",
               ]}
               link={{ text: "Sign up as lender", href: "/lend" }}
             />
             <InfoCard
               title="Storage Provider"
               steps={[
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Request a loan and make an initial deposit",
+                "Our protocol provides the remaining FIL",
+                "Claim interests and rewards, earn reputation and monitor your position",
               ]}
               link={{ text: "Sign up as provider", href: "/storage-provider" }}
             />
@@ -47,9 +47,8 @@ export default function Home() {
             NFT.storage for the Chicken Bond NFT
           </h2>
           <p className="mb-16">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-            excepturi dolorum odio facere reprehenderit ea temporibus quasi
-            illum doloremque placeat!
+            Lenders get an on-chain NFT that represents the state of the their
+            bond
           </p>
           <div className="flex gap-14 justify-center">
             <Image
@@ -112,9 +111,8 @@ export default function Home() {
             />
             <div className="w-3/5 pt-12 flex flex-col gap-7 items-start">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor
-                non illo dolorem perferendis itaque dolore neque nobis eveniet
-                velit mollitia!
+                Every user will get an on-chain NFT that changes based on the
+                users&apos; actions
               </p>
               <Link href="/overview" className="cta-primary">
                 Check them out
