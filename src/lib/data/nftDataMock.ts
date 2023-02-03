@@ -27,8 +27,8 @@ export const nftDataMock: Array<NftMockType> = [
       value: "115.3",
       token: "bTFIL",
     },
-    created_at: "1654005776000",
-    status: "chicken-in",
+    created_at: "1675445304620",
+    status: "bonding",
   },
   {
     contract_address: "0xF6E24c5E9abcaCA61c9478c9b7117dB86FF2011F",

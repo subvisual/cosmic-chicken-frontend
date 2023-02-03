@@ -1,15 +1,41 @@
 import { NftMockType } from "../data/nftDataMock";
 import Image from "next/image";
+import useModal from "../hooks/useModal";
 
 export default function NftCard({ nft }: { nft: NftMockType }) {
+  const { renderModal } = useModal();
+
+  function handleChickenIn() {
+    renderModal({
+      message:
+        "By chickening in, you lose your initial deposit and get the boosted token",
+      onContinue: () => console.log("Get insidee"),
+    });
+  }
+
+  function handleChickenOut() {
+    renderModal({
+      message:
+        "By chickening out, you lose your initial deposit and get the boosted token",
+      onContinue: () => console.log("Get me out"),
+    });
+  }
+
   return (
     <div className="flex gap-12 rounded-3xl bg-beige drop-shadow-light p-12 pt-14">
-      <Image src={`/images/bonds/bond-${nft.status}.svg`} alt="" width={142.26} height={208.64} />
+      <Image
+        src={`/images/bonds/bond-${nft.status}.svg`}
+        alt=""
+        width={142.26}
+        height={208.64}
+      />
       <div className="w-full flex flex-col justify-center items-center">
         <div className="flex justify-around flex-wrap gap-8 py-12 w-full">
           <div>
             <p>Created at</p>
-            <p>{new Date(parseInt(nft.created_at)).toLocaleDateString("en-UK")}</p>
+            <p>
+              {new Date(parseInt(nft.created_at)).toLocaleDateString("en-UK")}
+            </p>
           </div>
           <div>
             <p>Deposit</p>
@@ -24,10 +50,10 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
           <>
             <hr className="w-full" />
             <div className="px-12 mt-6 flex gap-24 justify-around">
-              <button className="btn btn-orange" onClick={() => console.log("chicken in")}>
+              <button className="btn btn-orange" onClick={handleChickenIn}>
                 Chicken in
               </button>
-              <button className="btn btn-brown" onClick={() => console.log("chicken out")}>
+              <button className="btn btn-brown" onClick={handleChickenOut}>
                 Chicken out
               </button>
             </div>
