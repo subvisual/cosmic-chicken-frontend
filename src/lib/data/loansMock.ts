@@ -74,11 +74,11 @@ export const LoansMock: Array<LoanMockType> = [
     address: "0xaf4f3bde74e49ddf63dee2a5df05687e67553d3f",
     loan_id: "4",
     amount_deposited: {
-      value: "380",
+      value: "90",
       token: "TFIL",
     },
     total_deposit: {
-      value: "90",
+      value: "380",
       token: "TFIL",
     },
     created_at: "1675270793000",
