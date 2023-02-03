@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Hero from "@/lib/components/Hero";
-import Header from "@/lib/components/Header";
+import Hero from "@/lib/modules/Landing/Hero";
 import Footer from "@/lib/components/Footer";
 import Head from "next/head";
 import Image from "next/image";
 import InfoCard from "@/lib/components/InfoCard";
+import LandingHeader from "@/lib/modules/Layout/LandingHeader";
 
 export default function Home() {
   return (
@@ -15,8 +15,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <Hero />
+      <div className="flex-auto mx-auto w-full max-w-6xl mb-16">
+        <LandingHeader />
+        <Hero />
+      </div>
       <main>
         <section className="pb-48">
           <div className="grid grid-cols-2 gap-20 justify-between max-w-[960px] mx-auto">
@@ -41,10 +43,13 @@ export default function Home() {
           </div>
         </section>
         <section className="w-3/5 mx-auto text-center pb-60">
-          <h2 className="font-sans text-4xl mb-8">NFT.storage for the Chicken Bond NFT</h2>
+          <h2 className="font-sans text-4xl mb-8">
+            NFT.storage for the Chicken Bond NFT
+          </h2>
           <p className="mb-16">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et excepturi dolorum odio
-            facere reprehenderit ea temporibus quasi illum doloremque placeat!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
+            excepturi dolorum odio facere reprehenderit ea temporibus quasi
+            illum doloremque placeat!
           </p>
           <div className="flex gap-14 justify-center">
             <Image
@@ -83,14 +88,21 @@ export default function Home() {
               height={61.09}
               className="absolute -top-8 right-24"
             />
-            <h2 className="font-sans text-5xl mb-10 leading-snug">Need some FIL to start?</h2>
-            <Link href="/storage-provider" className="cta-primary hover:bg-black">
+            <h2 className="font-sans text-5xl mb-10 leading-snug">
+              Need some FIL to start?
+            </h2>
+            <Link
+              href="/storage-provider"
+              className="cta-primary hover:bg-black"
+            >
               Sign up
             </Link>
           </div>
         </section>
         <section className="pt-32 pb-40 bg-offwhite">
-          <h2 className="font-sans text-5xl mb-10 text-center">How are the chickens?</h2>
+          <h2 className="font-sans text-5xl mb-10 text-center">
+            How are the chickens?
+          </h2>
           <div className="flex items-center gap-16 w-3/5 mx-auto">
             <Image
               src="/images/chicken-ufo.png"
@@ -100,8 +112,9 @@ export default function Home() {
             />
             <div className="w-3/5 pt-12 flex flex-col gap-7 items-start">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor non illo dolorem
-                perferendis itaque dolore neque nobis eveniet velit mollitia!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor
+                non illo dolorem perferendis itaque dolore neque nobis eveniet
+                velit mollitia!
               </p>
               <Link href="/overview" className="cta-primary">
                 Check them out

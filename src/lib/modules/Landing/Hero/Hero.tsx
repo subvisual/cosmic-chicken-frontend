@@ -5,8 +5,6 @@ import classNames from "classnames";
 import EggBox from "../EggBox";
 
 export default function Hero() {
-  /* const [activeEgg, setActiveEgg] = useState<number>(); */
-
   return (
     <section className={styles["root"]}>
       <div className="relative flex-1 flex items-end justify-center 2xl:mb-4">
@@ -28,7 +26,7 @@ export default function Hero() {
         <div className={styles["astronaut"]}>
           <Image src="/images/astronaut.png" alt="An astronaut" fill />
         </div>
-        <EggBox />        
+        <EggBox />
       </div>
       <p className="text-center text-large  max-w-2xl 2xl:max-w-lg mx-auto text-brown">
         Borrow collateral from reputable lenders and lock the future income

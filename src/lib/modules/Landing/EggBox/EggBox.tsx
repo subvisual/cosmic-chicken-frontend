@@ -41,7 +41,7 @@ export default function EggBox() {
       <p
         className={classNames(
           styles["egg-text"],
-          "absolute top-1/2 text-orange text-center font-hand text-large -rotate-6 transition-opacity",
+          "absolute top-1/2 text-orange text-center font-hand text-3xl leading-tight -rotate-6 transition-opacity",
           activeEgg !== undefined ? "delay-500" : "",
           activeEgg !== undefined ? "opacity-100" : "opacity-0"
         )}
