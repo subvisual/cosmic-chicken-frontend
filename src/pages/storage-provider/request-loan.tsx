@@ -1,13 +1,42 @@
 import AppHeader from "@/lib/components/AppHeader";
 import Router from "next/router";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
+import { POOL_CONTRACT } from "../../lib/constants";
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
+import { parseEther } from "ethers/lib/utils.js";
+import abi from "../../lib/abi/pool.json";
 
 export default function RequestLoan() {
+  const [minerAddress, setMinerAddress] = useState<string>("");
+  const [ownerAddress, setOwnerAddress] = useState<string>("");
+  const [amount, setAmount] = useState<number>(0);
+
+  const { config } = usePrepareContractWrite({
+    address: POOL_CONTRACT,
+    abi,
+    functionName: "requestLoan",
+    args: [ownerAddress, minerAddress, parseEther((amount || 0).toString())],
+  });
+
+  const { data, write } = useContractWrite(config);
+
+  const { isLoading } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  useEffect(() => {
+    isLoading && Router.push("/storage-provider");
+  }, [isLoading]);
+
+  const handleMinerChange = (ev: ChangeEvent<HTMLInputElement>) => setMinerAddress(ev.target.value);
+  const handleOwnerChange = (ev: ChangeEvent<HTMLInputElement>) => setOwnerAddress(ev.target.value);
+  const handleAmountChange = (ev: ChangeEvent<HTMLInputElement>) =>
+    setAmount(parseFloat(ev.target.value));
+
   const handleFormSubmit = (ev: ChangeEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    console.log("loan requested");
-    Router.push("/storage-provider");
+    write?.();
   };
 
   return (
@@ -22,6 +51,8 @@ export default function RequestLoan() {
           <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
             Address of the miner/worker
             <input
+              required
+              onChange={handleMinerChange}
               name="miner address"
               type="text"
               placeholder="type here"
@@ -31,6 +62,8 @@ export default function RequestLoan() {
           <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
             Address of the owner
             <input
+              required
+              onChange={handleOwnerChange}
               name="owner address"
               type="text"
               placeholder="type here"
@@ -40,14 +73,18 @@ export default function RequestLoan() {
           <label className="bg-offwhite p-3 flex justify-between gap-6 w-full">
             Amount that want to request
             <input
+              onChange={handleAmountChange}
               name="amount requested"
               type="text"
+              required
+              min="1"
               placeholder="type here"
               className="bg-transparent outline-brown w-1/2"
             />
           </label>
           <label>
-            <input type="checkbox" className="mr-2" />I consent to keep my eggs in the frigde
+            <input type="checkbox" className="mr-2" required />I consent to keep my eggs in the
+            frigde
           </label>
           <div className="flex justify-between items-center w-full pt-4">
             <button className="btn btn-brown hover:bg-orange hover:border-orange" type="submit">

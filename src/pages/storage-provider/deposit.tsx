@@ -1,7 +1,6 @@
 import Router from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from "wagmi";
-import { BigNumber } from "ethers";
 import { parseEther } from "ethers/lib/utils.js";
 import AppHeader from "@/lib/components/AppHeader";
 import abi from "../../lib/abi/pool.json";
