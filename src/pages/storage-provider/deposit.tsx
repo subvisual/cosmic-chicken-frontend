@@ -60,7 +60,7 @@ export default function Deposit() {
             <input
               required
               min="1"
-              className="text-4xl border border-light-brown rounded-xl py-1 px-3 block max-w-full appearance-none"
+              className="text-4xl border border-light-brown rounded-xl py-1 px-3 block max-w-full appearance-none outline-light-brown"
               placeholder="100 tFIL"
               onChange={handleInputChange}
             />

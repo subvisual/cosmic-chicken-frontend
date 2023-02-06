@@ -67,7 +67,7 @@ export default function RequestLoan() {
               name="owner address"
               type="text"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2 px-2 py-1"
+              className="bg-transparent outline-light-brown w-1/2 px-2 py-1"
             />
           </label>
           <label className="bg-offwhite px-3 py-2 flex justify-between gap-6 w-full items-center">
@@ -79,7 +79,7 @@ export default function RequestLoan() {
               required
               min="1"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2 px-2 py-1"
+              className="bg-transparent outline-light-brown w-1/2 px-2 py-1"
             />
           </label>
           <label>
