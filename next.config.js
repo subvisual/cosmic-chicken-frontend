@@ -4,6 +4,14 @@ const nextConfig = {
   experimental: {
     appDir: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.ipfs.nftstorage.link",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
