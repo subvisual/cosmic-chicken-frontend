@@ -6,6 +6,7 @@ import { POOL_CONTRACT } from "../../lib/constants";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { parseEther } from "ethers/lib/utils.js";
 import abi from "../../lib/abi/pool.json";
+import { BigNumber } from "ethers";
 
 export default function RequestLoan() {
   const [minerAddress, setMinerAddress] = useState<string>("");
@@ -17,6 +18,10 @@ export default function RequestLoan() {
     abi,
     functionName: "requestLoan",
     args: [ownerAddress, minerAddress, parseEther((amount || 0).toString())],
+    enabled: !!minerAddress && !!ownerAddress && !!amount,
+    overrides: {
+      gasLimit: BigNumber.from(1e10),
+    },
   });
 
   const { data, write } = useContractWrite(config);
@@ -67,7 +72,7 @@ export default function RequestLoan() {
               name="owner address"
               type="text"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2 px-2 py-1"
+              className="bg-transparent outline-light-brown w-1/2 px-2 py-1"
             />
           </label>
           <label className="bg-offwhite px-3 py-2 flex justify-between gap-6 w-full items-center">
@@ -79,7 +84,7 @@ export default function RequestLoan() {
               required
               min="1"
               placeholder="type here"
-              className="bg-transparent outline-brown w-1/2 px-2 py-1"
+              className="bg-transparent outline-light-brown w-1/2 px-2 py-1"
             />
           </label>
           <label>

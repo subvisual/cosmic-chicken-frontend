@@ -1,6 +1,6 @@
 .root {
   display: flex;
-  gap: 12px;
+  gap: 48px;
   flex-direction: column;
   height: 70vh;
   margin-bottom: 16px;
