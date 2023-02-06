@@ -1,8 +1,7 @@
 import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
-import { useAccount, useContractRead } from "wagmi";
-import { LoansMock } from "@/lib/data/loansMock";
+import { useAccount, useContractRead, useQuery } from "wagmi";
 import { useEffect, useMemo, useState } from "react";
 import Router from "next/router";
 import LoanCard from "@/lib/components/LoanCard";
@@ -16,13 +15,14 @@ export default function StorageProvider() {
   const [loanFilter, setLoanFilter] = useState<"current" | "finished">("current");
   const [balance, setBalance] = useState<number>();
 
-  const userLoans = useMemo(() => {
-    if (!address) return;
-
-    return LoansMock.filter(
-      loan => loan.address.toLowerCase() === (address as string).toLowerCase()
-    );
-  }, [address]);
+  const { data: loans }: { data?: Array<LoanData> } = useQuery(
+    ["loans", address],
+    async () => await (await fetch("/api/loans/" + address?.toLowerCase())).json(),
+    {
+      enabled: !!address,
+      refetchInterval: 10000,
+    }
+  );
 
   const { data } = useContractRead({
     address: POOL_CONTRACT,
@@ -38,15 +38,23 @@ export default function StorageProvider() {
   const displayLoans = useMemo(() => {
     switch (loanFilter) {
       case "finished":
-        return userLoans?.filter(loan => loan.status === "closed");
+        return loans?.filter(
+          loan =>
+            Number(loan.projection_fields.repaid_amount) >=
+            Number(loan.projection_fields.total_amount)
+        );
 
       case "current":
-        return userLoans?.filter(loan => loan.status === "active");
+        return loans?.filter(
+          loan =>
+            Number(loan.projection_fields.repaid_amount) <
+            Number(loan.projection_fields.total_amount)
+        );
 
       default:
-        return userLoans;
+        return loans;
     }
-  }, [loanFilter, userLoans]);
+  }, [loanFilter, loans]);
 
   useEffect(() => {
     if (!balance) return;
@@ -91,9 +99,9 @@ export default function StorageProvider() {
               {displayLoans && displayLoans.length > 0 ? (
                 <div className="flex flex-col gap-12">
                   {displayLoans
-                    .sort((a, b) => Number(b.loan_id) - Number(a.loan_id))
+                    .sort((a, b) => Number(b.projection_id) - Number(a.projection_id))
                     .map(loan => (
-                      <LoanCard loan={loan} key={loan.loan_id} />
+                      <LoanCard loan={loan} key={loan.projection_id} />
                     ))}
                 </div>
               ) : (

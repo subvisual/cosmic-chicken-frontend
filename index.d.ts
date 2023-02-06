@@ -1,6 +1,6 @@
 type NftData = {
   contract_address: string;
-  inserted_at: "2023-02-06T11:18:12";
+  inserted_at: string;
   projection_fields: {
     amount: string;
     owner: string;
@@ -9,11 +9,13 @@ type NftData = {
   projection_id: string;
 };
 
-type transferData = {
+type LoanData = {
   contract_address: string;
-  event_args: {
-    from: string;
-    id: string;
-    to: string;
+  inserted_at: string;
+  projection_fields: {
+    owner: string;
+    repaid_amount: string;
+    total_amount: string;
   };
-}[];
+  projection_id: string;
+};

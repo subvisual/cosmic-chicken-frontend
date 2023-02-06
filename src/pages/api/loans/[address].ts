@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { INDEXER_URL } from "@/lib/constants";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Array<NftData>>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Array<LoanData>>) {
   const { address } = req.query;
   const response = await fetch(
-    INDEXER_URL + "/projections/bond_nft?owner=" + address?.toLocaleString()
+    INDEXER_URL + "/projections/loan?owner=" + address?.toLocaleString()
   );
 
   if (!response.ok) {
