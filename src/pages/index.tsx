@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex-auto mx-auto w-full max-w-6xl mb-16">
+      <div className="flex-auto mx-auto w-full max-w-6xl mb-24">
         <LandingHeader />
         <Hero />
       </div>
@@ -43,28 +43,25 @@ export default function Home() {
           </div>
         </section>
         <section className="w-3/5 mx-auto text-center pb-60">
-          <h2 className="font-sans text-4xl mb-8">
-            NFT.storage for the Chicken Bond NFT
-          </h2>
+          <h2 className="font-sans text-4xl mb-8">NFT.storage for the Chicken Bond NFT</h2>
           <p className="mb-16">
-            Lenders get an on-chain NFT that represents the state of the their
-            bond
+            Lenders get an on-chain NFT that represents the state of the their bond
           </p>
           <div className="flex gap-14 justify-center">
             <Image
-              src="/images/bonds/bond-bonding.svg"
+              src="/images/bonds/bond-active.svg"
               alt="Bond NFT - bonding"
               width={180}
               height={264}
             />
             <Image
-              src="/images/bonds/bond-chicken-in.svg"
+              src="/images/bonds/bond-chickened-in.svg"
               alt="Bond NFT - chicken-in"
               width={180}
               height={264}
             />
             <Image
-              src="/images/bonds/bond-chicken-out.svg"
+              src="/images/bonds/bond-chickened-out.svg"
               alt="Bond NFT - chicken-out"
               width={180}
               height={264}
@@ -87,37 +84,24 @@ export default function Home() {
               height={61.09}
               className="absolute -top-8 right-24"
             />
-            <h2 className="font-sans text-5xl mb-10 leading-snug">
-              Need some FIL to start?
-            </h2>
-            <Link
-              href="/storage-provider"
-              className="cta-primary hover:bg-black"
-            >
+            <h2 className="font-sans text-5xl mb-10 leading-snug">Need some FIL to start?</h2>
+            <Link href="/storage-provider" className="cta-primary hover:bg-black">
               Sign up
             </Link>
           </div>
         </section>
         <section className="pt-32 pb-40 bg-offwhite">
-          <h2 className="font-sans text-5xl mb-10 text-center">
-            How are the chickens?
-          </h2>
-          <div className="flex items-center gap-16 w-3/5 mx-auto">
+          <h2 className="font-sans text-5xl mb-10 text-center">How are the chickens?</h2>
+          <div className="flex items-center justify-center gap-24 w-3/5 mx-auto">
             <Image
               src="/images/chicken-ufo.png"
               alt="chicken on a flying saucer"
               width={332.91}
               height={162.92}
             />
-            <div className="w-3/5 pt-12 flex flex-col gap-7 items-start">
-              <p>
-                Every user will get an on-chain NFT that changes based on the
-                users&apos; actions
-              </p>
-              <Link href="/overview" className="cta-primary">
-                Check them out
-              </Link>
-            </div>
+            <Link href="/overview" className="cta-primary">
+              Check them out
+            </Link>
           </div>
         </section>
       </main>
