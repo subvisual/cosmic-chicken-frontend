@@ -9,7 +9,7 @@ export default function Header({ type }: { type: "Lender" | "Storage Provider" }
 
   return (
     <header className="py-6 px-8 bg-light-brown flex justify-between">
-      <Link href={type === "Lender" ? "/lender" : "/storage-provider"}>
+      <Link href={type === "Lender" ? "/lend" : "/storage-provider"}>
         <h1 className="text-4xl font-sans">{type} dashboard</h1>
       </Link>
       {isConnected && (

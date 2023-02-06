@@ -2,13 +2,10 @@ import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
 import NftCard from "@/lib/components/NftCard";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useQuery } from "react-query";
-import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
-import { BOND_MANAGER_CONTRACT } from "@/lib/constants";
-import abi from "../lib/abi/bondManager.json";
-import { BigNumber } from "ethers";
-import { parseEther } from "ethers/lib/utils.js";
+import { useAccount } from "wagmi";
 
 export default function Lend() {
   const { address, isConnected } = useAccount();
@@ -35,19 +32,6 @@ export default function Lend() {
         return nfts;
     }
   }, [bondFilter, nfts]);
-
-  const { config } = usePrepareContractWrite({
-    address: BOND_MANAGER_CONTRACT,
-    abi,
-    functionName: "createBond",
-    overrides: {
-      value: parseEther("1"),
-      gasLimit: BigNumber.from(1e10),
-    },
-  });
-  const { write } = useContractWrite(config);
-
-  const mintNFT = () => write?.();
 
   return (
     <ClientOnly>
@@ -81,9 +65,9 @@ export default function Lend() {
                     Expired
                   </button>
                 </div>
-                <button className="btn btn-orange" onClick={mintNFT}>
+                <Link href="/lend/mint" className="btn btn-orange">
                   Mint new bond
-                </button>
+                </Link>
               </div>
               {displayBonds && displayBonds.length > 0 ? (
                 <div className="flex flex-col gap-12">
