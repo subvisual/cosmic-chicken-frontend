@@ -14,7 +14,7 @@ import { useMemo } from "react";
 
 export default function NftCard({ nft }: { nft: NftData }) {
   const { renderModal } = useModal();
-  const apy = 0.001;
+  const apy = 0.047;
 
   const accruedValue = apy + Number(nft.projection_fields.amount) * 10 ** -18;
   const deposit = Number(nft.projection_fields.amount) * 10 ** -18;
