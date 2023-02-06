@@ -6,6 +6,7 @@ import { POOL_CONTRACT } from "../../lib/constants";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { parseEther } from "ethers/lib/utils.js";
 import abi from "../../lib/abi/pool.json";
+import { BigNumber } from "ethers";
 
 export default function RequestLoan() {
   const [minerAddress, setMinerAddress] = useState<string>("");
@@ -17,6 +18,10 @@ export default function RequestLoan() {
     abi,
     functionName: "requestLoan",
     args: [ownerAddress, minerAddress, parseEther((amount || 0).toString())],
+    enabled: !!minerAddress && !!ownerAddress && !!amount,
+    overrides: {
+      gasLimit: BigNumber.from(1e10),
+    },
   });
 
   const { data, write } = useContractWrite(config);

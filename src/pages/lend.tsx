@@ -9,6 +9,7 @@ import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
 import { BOND_MANAGER_CONTRACT } from "@/lib/constants";
 import abi from "../lib/abi/bondManager.json";
 import { BigNumber } from "ethers";
+import { parseEther } from "ethers/lib/utils.js";
 
 export default function Lend() {
   const { address, isConnected } = useAccount();
@@ -41,6 +42,7 @@ export default function Lend() {
     abi,
     functionName: "createBond",
     overrides: {
+      value: parseEther("1"),
       gasLimit: BigNumber.from(1e10),
     },
   });
