@@ -28,14 +28,7 @@ export default function Deposit() {
   });
 
   useEffect(() => {
-    isLoading &&
-      Router.push(
-        {
-          pathname: "/storage-provider",
-          query: { a: amount },
-        },
-        "/storage-provider"
-      );
+    isLoading && Router.push("/storage-provider");
   }, [isLoading]);
 
   const handleInputChange = (ev: ChangeEvent<HTMLInputElement>) => {
