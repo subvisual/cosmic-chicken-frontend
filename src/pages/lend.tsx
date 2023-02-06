@@ -2,7 +2,6 @@ import AppHeader from "@/lib/components/AppHeader";
 import ClientOnly from "@/lib/components/ClientOnly";
 import Connect from "@/lib/components/Connect";
 import NftCard from "@/lib/components/NftCard";
-import { NftMockType } from "@/lib/data/nftDataMock";
 import { useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
@@ -15,7 +14,7 @@ export default function Lend() {
   const { address, isConnected } = useAccount();
   const [bondFilter, setBondFilter] = useState<"none" | "current" | "expired">("none");
 
-  const { data: nfts }: { data?: Array<NftMockType> } = useQuery(
+  const { data: nfts }: { data?: Array<NftData> } = useQuery(
     ["nfts", address],
     async () => await (await fetch("/api/nfts/" + address?.toLowerCase())).json(),
     {
@@ -27,10 +26,10 @@ export default function Lend() {
   const displayBonds = useMemo(() => {
     switch (bondFilter) {
       case "current":
-        return nfts?.filter(nft => nft.status === "bonding");
+        return nfts?.filter(nft => nft.projection_fields.status === "active");
 
       case "expired":
-        return nfts?.filter(nft => nft.status !== "bonding");
+        return nfts?.filter(nft => nft.projection_fields.status !== "active");
 
       default:
         return nfts;

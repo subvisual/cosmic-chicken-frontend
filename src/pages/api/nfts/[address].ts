@@ -1,12 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { nftDataMock } from "@/lib/data/nftDataMock";
+import { INDEXER_URL } from "@/lib/constants";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<nftData>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<NftData>) {
   const { address } = req.query;
-
-  const userNfts = nftDataMock.filter(
-    nft => nft.projection_fields.owner.toLowerCase() === (address as string).toLowerCase()
+  const response = await fetch(
+    INDEXER_URL + "/projections/bond_nft?owner=" + address?.toLocaleString()
   );
 
-  res.status(200).json(userNfts);
+  if (!response.ok) {
+    throw new Error("error");
+  }
+  const { data } = await response.json();
+
+  res.status(200).json(data);
 }

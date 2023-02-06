@@ -1,4 +1,3 @@
-import { NftMockType } from "../data/nftDataMock";
 import Image from "next/image";
 import useModal from "../hooks/useModal";
 import { truncateAmount } from "../utils/truncate";
@@ -7,8 +6,11 @@ import { BOND_MANAGER_CONTRACT } from "../constants";
 import abi from "../abi/bondManager.json";
 import { BigNumber } from "ethers";
 
-export default function NftCard({ nft }: { nft: NftMockType }) {
+export default function NftCard({ nft }: { nft: NftData }) {
   const { renderModal } = useModal();
+  const apy = useMemo(() => (Math.random() + 0.2) / 10, [nft.projection_id]);
+  const accruedValue = apy + Number(nft.projection_fields.amount) * 10 ** -18;
+  const deposit = Number(nft.projection_fields.amount) * 10 ** -18;
 
   const { config: chickenInConfig } = usePrepareContractWrite({
     address: BOND_MANAGER_CONTRACT,
@@ -50,16 +52,15 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
   return (
     <div className="flex gap-12 rounded-3xl bg-beige drop-shadow-light p-12 pt-14">
       <div className="flex flex-col gap-4">
-        <Image src={`/images/bonds/bond-${nft.status}.svg`} alt="" width={142.26} height={208.64} />
+        <Image
+          src={`/images/bonds/bond-${nft.projection_fields.status}.svg`}
+          alt=""
+          width={142.26}
+          height={208.64}
+        />
         <div className="text-center">
           <p className="leading-none">APY</p>
-          <p className="font-bold">
-            {truncateAmount(
-              (parseFloat(nft.accrued_value.value) / parseFloat(nft.deposit.value)) * 100,
-              2
-            )}
-            %
-          </p>
+          <p className="font-bold">{truncateAmount(apy * 100, 2)}%</p>
         </div>
       </div>
       <div className="w-full flex flex-col justify-center items-center">
@@ -67,21 +68,21 @@ export default function NftCard({ nft }: { nft: NftMockType }) {
           <div>
             <p>Created at</p>
             <p className="font-bold text-xl">
-              {new Date(parseInt(nft.created_at)).toLocaleDateString("en-UK")}
+              {new Date(nft.inserted_at).toLocaleDateString("en-UK")}
             </p>
           </div>
           <div>
             <p>Deposit</p>
-            <p className="font-bold text-xl">{nft.deposit.value + " " + nft.deposit.token}</p>
+            <p className="font-bold text-xl">
+              {deposit > 1000 || deposit < 0.001 ? deposit.toExponential(1) : deposit} TFIL
+            </p>
           </div>
           <div>
             <p>Accrued value</p>
-            <p className="font-bold text-xl">
-              {nft.accrued_value.value + " " + nft.accrued_value.token}
-            </p>
+            <p className="font-bold text-xl">{truncateAmount(accruedValue)} bTFIL</p>
           </div>
         </div>
-        {nft.status === "bonding" && (
+        {nft.projection_fields.status === "active" && (
           <>
             <hr className="w-full" />
             <div className="px-12 mt-6 flex gap-24 justify-around">
