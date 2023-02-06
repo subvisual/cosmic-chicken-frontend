@@ -89,7 +89,7 @@ export default function RequestLoan() {
           </label>
           <label>
             <input type="checkbox" className="mr-2" required />I consent to keep my eggs in the
-            frigde
+            fridge
           </label>
           <div className="flex justify-between items-center w-full pt-4">
             <button className="btn btn-brown hover:bg-orange hover:border-orange" type="submit">
