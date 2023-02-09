@@ -4,6 +4,7 @@
   flex-direction: column;
   height: 70vh;
   margin-bottom: 16px;
+  min-height: 650px;
 }
 .hero-img {
   position: relative;

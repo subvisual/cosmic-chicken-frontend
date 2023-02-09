@@ -47,7 +47,7 @@ export default function Home() {
           <p className="mb-16">
             Lenders get an on-chain NFT that represents the state of the their bond
           </p>
-          <div className="flex gap-14 justify-center">
+          <div className="flex gap-16 justify-center">
             <Image
               src="/images/bonds/bond-active.svg"
               alt="Bond NFT - bonding"
@@ -69,20 +69,20 @@ export default function Home() {
           </div>
         </section>
         <section className="pb-48">
-          <div className="bg-orange rounded-3xl w-3/5 mx-auto px-52 pt-16 pb-10 text-center relative">
+          <div className="bg-orange rounded-3xl w-3/5 mx-auto px-auto pt-16 pb-10 text-center relative max-w-[668px]">
             <Image
               src="/images/asteroid-3.png"
               alt="asteroid flying down from left"
               width={160.56}
               height={126.61}
-              className="absolute -top-12 left-4"
+              className="absolute -top-20 left-4"
             />
             <Image
               src="/images/asteroid-4.png"
               alt="asteroid flying down from right"
               width={182.98}
               height={61.09}
-              className="absolute -top-8 right-24"
+              className="absolute -top-8 right-8"
             />
             <h2 className="font-sans text-5xl mb-10 leading-snug">Need some FIL to start?</h2>
             <Link href="/storage-provider" className="cta-primary hover:bg-black">
