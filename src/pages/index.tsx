@@ -94,7 +94,7 @@ export default function Home() {
           <h2 className="font-sans text-5xl mb-10 text-center">How are the chickens?</h2>
           <div className="flex items-center justify-center gap-24 w-3/5 mx-auto">
             <Image
-              src="/images/chicken-ufo.png"
+              src="/images/chicken-ufo.svg"
               alt="chicken on a flying saucer"
               width={332.91}
               height={162.92}
