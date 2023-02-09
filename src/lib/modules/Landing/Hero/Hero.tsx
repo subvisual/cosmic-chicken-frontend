@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className={styles["root"]}>
-      <div className="relative flex-1 flex items-end justify-center 2xl:mb-4">
+      <div className={styles["hero-img"]}>
         <Image
           src="/images/asteroid-2.png"
           alt="An asteroid"

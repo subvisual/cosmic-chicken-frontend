@@ -5,6 +5,14 @@
   height: 70vh;
   margin-bottom: 16px;
 }
+.hero-img {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex: 1 1 0%;
+  align-items: flex-end;
+  justify-content: center;
+}
 .asteroid-1 {
   position: absolute;
   right: 26%;
@@ -35,6 +43,9 @@
 }
 
 @media screen and (min-width: 1500px) {
+  .hero-img {
+    margin-bottom: 1rem;
+  }
   .astronaut {
     width: 254px;
     height: 457px;
