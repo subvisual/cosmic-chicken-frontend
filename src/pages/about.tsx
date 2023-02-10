@@ -13,7 +13,7 @@ export default function Home() {
         <section className="mb-20 mx-auto w-2/4 max-w-3xl">
           <h2 className="font-sans text-4xl mb-7">About the project</h2>
           <p>
-            We leverage FVM to establish a undercollateralized lending protocol using the novel
+            We leverage FVM to establish an undercollateralized lending protocol using the novel
             bonding mechanism introduced by Liquity team.
             <br />
             <br />
@@ -21,12 +21,12 @@ export default function Home() {
             Storage Providers while providing an attractive yield opportunity for FIL token holders.
             <br />
             <br />
-            Using Chicken Bonds as a reference would allows the protocol to bootstrap liquidity at
+            Using Chicken Bonds as a reference would allow the protocol to bootstrap liquidity at
             minimal cost, while opening up new earning and trading strategies for the expected
             future yield of Storage Providers.
             <br />
             <br />
-            The project reated for FVM Space Warp hackathon.
+            The project was created for FVM Space Warp hackathon.
           </p>
         </section>
         <section className="mb-20 mx-auto w-2/4 max-w-3xl">
